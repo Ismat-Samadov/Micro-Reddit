@@ -39,6 +39,11 @@ Micro-Reddit is a lightweight Reddit clone built as a project for a Ruby on Rail
    rails console
    ```
 
+   ```ruby
+   user = User.new(username: "example_user", password: "password123")
+   user.save
+   ```
+
 6. **Playing with Associations**: Create the Post model, set up associations between User and Post models, and test them using the Rails console.
 
    ```bash
@@ -51,6 +56,12 @@ Micro-Reddit is a lightweight Reddit clone built as a project for a Ruby on Rail
      rails db:migrate
      ```
 
+   ```ruby
+   user = User.first # Assuming you have at least one user created
+   post = user.posts.build(title: "Example Post", body: "This is the body of the post.")
+   post.save
+   ```
+
 7. **Adding in Commenting**: Extend the application to support commenting functionality. Create the Comment model, set up associations with User and Post models, and test them in the Rails console.
 
    ```bash
@@ -62,6 +73,38 @@ Micro-Reddit is a lightweight Reddit clone built as a project for a Ruby on Rail
      ```bash
      rails db:migrate
      ```
+
+   ```ruby
+   post = Post.first # Assuming you have at least one post created
+   user = User.last # Assuming you have at least two users created
+   comment = Comment.new(body: "This is a comment.", user: user, post: post)
+   comment.save
+   ```
+
+## Using the Micro-Reddit App
+
+Once you have set up the models and migrations, you can interact with the Micro-Reddit app using the Rails console. Here are some examples of how to use the app:
+
+- **Create a User**:
+  ```ruby
+  user = User.new(username: "example_user", password: "password123")
+  user.save
+  ```
+
+- **Create a Post**:
+  ```ruby
+  user = User.first # Assuming you have at least one user created
+  post = user.posts.build(title: "Example Post", body: "This is the body of the post.")
+  post.save
+  ```
+
+- **Create a Comment**:
+  ```ruby
+  post = Post.first # Assuming you have at least one post created
+  user = User.last # Assuming you have at least two users created
+  comment = Comment.new(body: "This is a comment.", user: user, post: post)
+  comment.save
+  ```
 
 ## Additional Resources
 
